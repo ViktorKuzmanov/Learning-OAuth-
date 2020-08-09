@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const passport = require("passport");
 
 router.get("/login", (req, res) => {
   res.render("login");
@@ -9,9 +10,12 @@ router.get("/logout", (req, res) => {
   res.send("Loggin out");
 });
 
-router.get("/google", (req, res) => {
-  // TODO: handle with passport
-  res.send("Loggin in with google");
+// /auth/google route - Present the use with consent screen (on google button click)
+router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+
+// This is the google strategy callback route. You are redirected after click allow (consent screen)
+router.get("/google/redirect", (req, res) => {
+  res.send("you have reached the redirect url");
 });
 
 module.exports = router;
