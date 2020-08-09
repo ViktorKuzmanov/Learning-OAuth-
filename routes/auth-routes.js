@@ -13,3 +13,5 @@ router.get("/google", (req, res) => {
   // TODO: handle with passport
   res.send("Loggin in with google");
 });
+
+module.exports = router;
