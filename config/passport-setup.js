@@ -7,13 +7,13 @@ passport.use(
     {
       clientID: keys.google.clientID,
       clientSecret: keys.google.clientSecret,
-      // This is the Authorized redirect URI we set up in Google Console
+      // This is the Authorized redirect URI we set up in Google Console (callback route)
       callbackURL: "/auth/google/redirect",
     },
-    function (accessToken, refreshToken, profile, cb) {
-      User.findOrCreate({ googleId: profile.id }, function (err, user) {
-        return cb(err, user);
-      });
+    // This callback function is fired when user is redirected to callback route
+    (accessToken, refreshToken, profile, cb) => {
+      console.log("v1");
+      console.log(profile);
     }
   )
 );
