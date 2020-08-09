@@ -8,7 +8,8 @@ passport.use(
     {
       clientID: keys.google.googleID,
       clientSecret: keys.google.googleSecret,
-      callbackURL: "http://www.example.com/auth/google/callback",
+      // This is the Authorized redirect URI we set up in Google Console
+      callbackURL: "/auth/google/redirect",
     },
     function (accessToken, refreshToken, profile, cb) {
       User.findOrCreate({ googleId: profile.id }, function (err, user) {
