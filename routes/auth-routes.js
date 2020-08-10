@@ -15,7 +15,7 @@ router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 
 // This is the google strategy callback route. You are redirected after click allow (consent screen)
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
-  res.send("you have reached the redirect url");
+  res.send("you have reached the redirect url" + req.user);
 });
 
 module.exports = router;
