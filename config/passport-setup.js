@@ -8,8 +8,8 @@ passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
+passport.deserializeUser(function (id, done) {
+  User.findById(id, function (err, user) {
     done(err, user);
   });
 });
@@ -26,6 +26,7 @@ passport.use(
     function (accessToken, refreshToken, profile, done) {
       // check if user already exists in our database
       User.findOne({ googleId: profile.id }).then((currentUser) => {
+        console.log(profile);
         if (currentUser) {
           // we already have the user
           console.log("we already have the user - " + currentUser);
@@ -35,6 +36,7 @@ passport.use(
           new User({
             username: profile.displayName,
             googleId: profile.id,
+            thumbnail: profile._json.picture,
           })
             .save()
             .then((newUser) => {

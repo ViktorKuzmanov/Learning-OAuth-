@@ -22,7 +22,9 @@
       <a class="navbar-brand" href="/">HomePage</a>
     </nav>
     <main>
-      This is the your profile and your username is <%= user.username %>
+      <p>This is the your profile and your username is <%= user.username %></p>
+      <p>This is your image</p>
+      <img src="<%= user.thumbnail %>" alt="your profile image" />
     </main>
   </body>
 </html>
