@@ -1,0 +1,9 @@
+<nav class="navbar navbar-light bg-light">
+  <% if(user) { %>
+  <a class="navbar-brand" href="/auth/logout">Logout</a>
+  <% } else { %>
+  <a class="navbar-brand" href="/auth/login">Login page</a>
+  <% } %>
+  <a class="navbar-brand" href="/profile">Profile</a>
+  <a class="navbar-brand" href="/">HomePage</a>
+</nav>
