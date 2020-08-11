@@ -7,7 +7,8 @@ router.get("/login", (req, res) => {
 
 router.get("/logout", (req, res) => {
   // TODO: Handle with passport
-  res.send("Loggin out");
+  req.logout();
+  res.redirect("/");
 });
 
 // /auth/google route - Present the use with consent screen (on google button click)
