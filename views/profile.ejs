@@ -14,8 +14,11 @@
   <body>
     <!-- As a link -->
     <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="/auth/login">Login page</a>
+      <% if(user) { %>
       <a class="navbar-brand" href="/auth/logout">Logout</a>
+      <% } else { %>
+      <a class="navbar-brand" href="/auth/login">Login page</a>
+      <% } %>
       <a class="navbar-brand" href="/">HomePage</a>
     </nav>
     <main>
