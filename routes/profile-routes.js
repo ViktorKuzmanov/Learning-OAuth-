@@ -9,10 +9,7 @@ const authCheck = (req, res, next) => {
 };
 
 router.get("/", authCheck, (req, res) => {
-  res.send(
-    "you are logged in this is your profile and your username is = " +
-      req.user.username
-  );
+  res.render("profile", { user: req.user });
 });
 
 module.exports = router;
